@@ -16,7 +16,7 @@ after_success:
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
     # Take these images and push them to docker hub
-    - docker push wei9895/wei-qiu:wei9895/multi-client
-    - docker push wei9895/wei-qiu:wei9895/multi-nginx
-    - docker push wei9895/wei-qiu:wei9895/multi-server
-    - docker push wei9895/wei-qiu:wei9895/multi-worker
+    - docker push wei9895/multi-client
+    - docker push wei9895/multi-nginx
+    - docker push wei9895/multi-server
+    - docker push wei9895/multi-worker
