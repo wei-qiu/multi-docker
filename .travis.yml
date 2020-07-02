@@ -14,7 +14,7 @@ after_success:
     - docker build -t wei/multi-server ./server
     - docker build -t wei/multi-worker ./worker
     # Log in to the docker CLI
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
     # Take these images and push them to docker hub
     - docker push wei9895/wei-qiu:wei/multi-client
     - docker push wei9895/wei-qiu:wei/multi-nginx
