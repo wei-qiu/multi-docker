@@ -3,20 +3,20 @@ services:
     - docker
 
 before_install:
-    - docker build -t wei/react-test -f ./client/Dockerfile.dev ./client
+    - docker build -t {DOCKER_ID}/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true wei/react-test npm test
+    - docker run -e CI=true {DOCKER_ID}/react-test npm test
 
 after_success:
-    - docker build -t wei/multi-client ./client
-    - docker build -t wei/multi-nginx ./nginx
-    - docker build -t wei/multi-server ./server
-    - docker build -t wei/multi-worker ./worker
+    - docker build -t {DOCKER_ID}/multi-client ./client
+    - docker build -t {DOCKER_ID}/multi-nginx ./nginx
+    - docker build -t {DOCKER_ID}/multi-server ./server
+    - docker build -t {DOCKER_ID}/multi-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
     # Take these images and push them to docker hub
-    - docker push wei9895/wei-qiu:wei/multi-client
-    - docker push wei9895/wei-qiu:wei/multi-nginx
-    - docker push wei9895/wei-qiu:wei/multi-server
-    - docker push wei9895/wei-qiu:wei/multi-worker
+    - docker push {DOCKER_ID}/wei-qiu:wei/multi-client
+    - docker push {DOCKER_ID}/wei-qiu:wei/multi-nginx
+    - docker push {DOCKER_ID}/wei-qiu:wei/multi-server
+    - docker push {DOCKER_ID}/wei-qiu:wei/multi-worker
